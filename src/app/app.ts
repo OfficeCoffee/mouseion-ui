@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MockComponent } from './mock-component/mock-component';
+import { Popup } from './popup/popup';
 
 @Component({
-  imports: [RouterOutlet, MockComponent],
+  imports: [RouterOutlet, Popup],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
