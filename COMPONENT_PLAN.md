@@ -37,11 +37,11 @@ This has a `view all` button that routs the user to the `View Page` which will d
 
 When a user attempts to delete a word from either the `Dashboard` `words table` or the `View Words` page, a popup will appear asking the user to confirm or deny the confirmtaion.
 
-### Add Word Popup (/src/app/feature/popups/components/add-word-popup)
+### Add Word Popup (/src/app/feature/popups/components/word-template-popup)
 Takes in a word, origin (optional), and definition from the user. When the user clicks the `Add` button, the word is created and added to the database.
 
-### Edit Word Popup (/src/app/feature/popups/components/edit-word-popup)
+### Edit Word Popup (/src/app/feature/popups/components/word-template-popup)
 Takes in the selected word's information. The text areas displaying the information are disabled. When the user clicks the `Edit` button, the popup becomes a `Save Word` popup in which the user can now edit the word information.
 
-### Save Word Popup (/src/app/feature/popups/components/save-word-popup)
+### Save Word Popup (/src/app/feature/popups/components/word-template-popup)
 Takes in the selected words information. A user can adjust each attribute of a word. When the user clicks the `Save` button, the word record is updated in the database with the new information.
