@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 interface Word {
   id: number;
-  name: string
+  name: string;
 }
 
 @Component({
