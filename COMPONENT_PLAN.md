@@ -11,14 +11,38 @@
     - Confirmation Popup
     - Add Word / Edit Word / Save Word Popup
 
+# Component Descriptions and Behaviors (Data Model Interfaces)
 
+## View Words Page
 
+Displays the words based on a search query. For exmaple, searching a specific word in the `Dashboard` `searchbar` will direct the user to the `View Words` page which will display all words that match the search string. Clicking the `view all` button on the `Dashboard` will direct the user to `View Words` page to display all words.
 
+### Words Table
 
-The list of planned components and their designated folder paths.
-Assigned owner for each component across all team members:
+The table component of the `View Words` page that will display the filtered word information based on a search string.
 
-    For 3-person teams: Distribute components so each developer owns at least one major screen and associated child widget (for example: Member A owns the primary list/overview view and list-item card; Member B owns the detail view and status/action widgets; Member C owns the create/edit form and form input controls).
-    For 4-person teams: Distribute work across four distinct areas (for example: Member A owns the list/overview view; Member B owns the detail view and summary widgets; Member C owns the create/edit form; Member D owns search/filter controls, shared layout/navigation shell, or a secondary entity view).
+## Dashboard
 
-The planned data model interface each component expects to consume or emit.
+### Word of the Day
+Gets a random word from any deck for every day. On the left, it shows the word and its origin. On the right, it shows the definition of the word.
+
+### Search Bar
+Allows the user to input a word into the text field. Once the search button is pressed, it routes the user to the `View Page` querying the word they typed in.
+
+### Words Table
+This has a `view all` button that routs the user to the `View Page` which will display all words. Below that it displays the ten most recent words in descending order. This shows the word, origin, definition and an edit button for each word. Below that it shows a `add word` button that gives a popup for adding a word.
+
+## Popups
+
+### Confirmation Popup
+
+When a user attempts to delete a word from either the `Dashboard` `words table` or the `View Words` page, a popup will appear asking the user to confirm or deny the confirmtaion.
+
+### Add Word Popup
+Takes in a word, origin (optional), and definition from the user. When the user clicks the `Add` button, the word is created and added to the database.
+
+### Edit Word Popup
+Takes in the selected word's information. The text areas displaying the information are disabled. When the user clicks the `Edit` button, the popup becomes a `Save Word` popup in which the user can now edit the word information.
+
+### Save Word Popup
+Takes in the selected words information. A user can adjust each attribute of a word. When the user clicks the `Save` button, the word record is updated in the database with the new information.
