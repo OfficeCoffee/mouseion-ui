@@ -3,7 +3,7 @@
         <p> You got some cool words there. (This is for the homework)</p>
         <ul>
             @for (word of words; track word.id) {
-                <li> {{word.rawWord}}</li>
+                <li> {{word.name}}</li>
             }
         </ul>
     } @else {

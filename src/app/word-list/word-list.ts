@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 
 interface Word {
   id: number;
-  rawWord: string
+  name: string
 }
-
-
 
 @Component({
   imports: [],
@@ -16,9 +14,9 @@ interface Word {
 
 export class WordList {
   words: Word[] = [
-    { id: 1, rawWord: 'Farcical'},
-    { id: 2, rawWord: 'Gazette'},
-    { id: 3, rawWord: 'Liturgical'},
-    { id: 4, rawWord: 'Derision'},
+    { id: 1, name: 'Farcical'},
+    { id: 2, name: 'Gazette'},
+    { id: 3, name: 'Liturgical'},
+    { id: 4, name: 'Derision'},
   ]
 }
