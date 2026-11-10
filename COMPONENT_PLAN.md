@@ -11,7 +11,6 @@
     - Confirmation Popup
     - Add Word / Edit Word / Save Word Popup
 
-///home/tea/repos/mouseion-ui/src
 ## View Words Page (/src/app/feature/view-words-page)
 
 Displays the words based on a search query. For exmaple, searching a specific word in the `Dashboard` `searchbar` will direct the user to the `View Words` page which will display all words that match the search string. Clicking the `view all` button on the `Dashboard` will direct the user to `View Words` page to display all words.
