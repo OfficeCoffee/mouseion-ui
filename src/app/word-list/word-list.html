@@ -1,0 +1,14 @@
+<section class="word-list">
+    @if(words.length > 0) {
+        <p> You got some cool words there. (This is for the homework)</p>
+        <ul>
+            @for (word of words; track word.id) {
+                <li> {{word.rawWord}}</li>
+            }
+        </ul>
+    } @else {
+        <p> Alas, we are currently facing a state of absolute depletion.</p>
+    }
+</section>
+
+
