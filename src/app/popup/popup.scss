@@ -12,11 +12,9 @@
 
 .popup-header {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     padding: 10px 16px;
-    background: var(--mat-sys-primary-container);
-    color: var(--mat-sys-on-primary-container);
+    background: var(--mat-sys-secondary-container);
 }
 
 .close-btn {
@@ -32,4 +30,76 @@
 .close-btn:hover {
     background: color-mix(in srgb, currentColor 15%, transparent);
 }
+
+.save-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    background: var(--mat-sys-secondary);
+    color: #f5f5f5;
+    font: inherit;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background: color-mix(in srgb, var(--mat-sys-secondary), white 20%);
+}
+
+.content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 0;
+    padding: 16px;
+    background: #EDE9E6;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+    gap: 16px;
+    min-height: 0
+}
+
+.field {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    min-height: 0;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--mat-sys-on-surface-variant)
+}
+
+textarea {
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #8B7B6C;
+    border-radius: 8px;
+    background: var(--mat-sys-surface-container-lowest);
+    color: var(--mat-sys-on-surface);
+    font: inherit;
+    resize: none;
+}
+
+textarea::placeholder {
+    color: var(--mat-sys-on-surface-variant);
+    opacity: 0.7;
+}
+
+textarea:focus {
+    outline: 1px solid #8B7B6C;
+}
+
+
+
+
 

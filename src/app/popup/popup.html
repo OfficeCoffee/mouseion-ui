@@ -1,8 +1,23 @@
 <div class="card">
     <div class="popup-header">
         <button class="close-btn" type="button" aria-label="Close">X</button>
-        <button class="close-btn" type="button" aria-label="Save Word">Save</button>
-        <!-- Aria labels aren't working :/ -->
+        <button class="save-btn" type="button" aria-label="Save Word">Save</button>
     </div>
     
+    <div class="content">
+        <div class="row">
+            <div class="field">
+                <span>Word</span>
+                <textarea aria-label="Insert word input box" placeholder="Input text :D!"></textarea>
+            </div>
+            <div class="field">
+                <span>Origin</span>
+                <textarea aria-label="Insert origin input box" placeholder="Input text :D!"></textarea>
+            </div>
+        </div>
+        <div class="field wide">
+            <span>Definition</span>
+            <textarea aria-label="Insert definition input box" placeholder="Input text :D!"></textarea>
+        </div>
+    </div>
 </div>
