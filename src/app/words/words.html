@@ -3,13 +3,10 @@
 </div>
 
 <div class="word-list">
-
     @if (words.length > 0) {
         @for (word of words; track word.id){
             <li> {{ word.name }}</li>
         }
     } 
-
-
 </div>
 

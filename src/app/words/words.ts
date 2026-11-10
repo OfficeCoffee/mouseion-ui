@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
 
-
 interface Word {
   id: number;
   name: string
@@ -12,9 +11,6 @@ interface Word {
   styleUrl: './words.scss',
   templateUrl: './words.html',
 })
-
-
-
 
 export class Words {
 
