@@ -17,6 +17,15 @@
     background: var(--mat-sys-surface-container-high);
 }
 
+.action-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background: var(--mat-sys-outline);
+    color: var(--mat-sys-on-primary);
+    cursor: pointer;
+}
+
 .mock-Buton {
     display: flex;
     flex-direction: row;
