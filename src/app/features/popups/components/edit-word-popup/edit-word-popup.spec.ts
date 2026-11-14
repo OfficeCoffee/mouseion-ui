@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { WordTemplatePopup } from './word-template-popup';
+import { EditWordPopup } from './edit-word-popup';
 
-describe('WordTemplatePopup', () => {
-  let component: WordTemplatePopup;
-  let fixture: ComponentFixture<WordTemplatePopup>;
+describe('EditWordPopup', () => {
+  let component: EditWordPopup;
+  let fixture: ComponentFixture<EditWordPopup>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WordTemplatePopup],
+      imports: [EditWordPopup],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(WordTemplatePopup);
+    fixture = TestBed.createComponent(EditWordPopup);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
