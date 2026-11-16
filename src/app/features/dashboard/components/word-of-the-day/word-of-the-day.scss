@@ -1,0 +1,49 @@
+.word-of-the-day-container{
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    margin-top: 7px;
+    border: 5px solid #4169E1;
+    background: #ADD8E6;
+    align-items: center;
+}
+
+.header{
+    h3 {
+        font-size: 25px;
+        margin: 0;
+    }
+}
+
+.word-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+    margin-top: 7px;
+    border: 5px solid #4169E1;
+    background: #ADD8E6;
+}
+
+.word{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding: 15px;
+    // border: 2.5px solid #4169E1;
+    // background: #ADD8E6;
+    align-items: center;
+    justify-content: center;
+}
+
+.definition{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border: 2.5px solid #4169E1;
+    // background: #ADD8E6;
+    // p {
+    //     text-align: center;
+    // }
+}
