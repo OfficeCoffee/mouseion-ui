@@ -61,8 +61,18 @@ export class WordService{
             )
         );
     }
+
+    /**
+     * MOCK: Delete when done.
+     * Words are created through the deck service.
+     */
+    createWord(dto: CreateWordDto): void {
+        const newWord: WordResponseDto = {
+            ...dto,
+
+            id: 42, // There is no answer ;-;
+            createdAt: new Date().toISOString()
+        };
+        this._words.update(list => [...list, newWord]);
+    }
 }
-
-
-
-
