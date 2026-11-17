@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
+import { CreateWordDto, WordResponseDto } from '../../shared/word.interface';
+import { WordService } from '../../services';
 
 interface Word {
   id: number;
@@ -13,10 +15,24 @@ interface Word {
 })
 
 export class WordList {
-  words: Word[] = [
-    { id: 1, name: 'Farcical'},
-    { id: 2, name: 'Gazette'},
-    { id: 3, name: 'Liturgical'},
-    { id: 4, name: 'Derision'},
-  ]
+  // rawWord = signal('');
+
+  // constructor(protected readonly wordService: WordService) {}
+
+  // onAddWord(): void {
+  //   const word = this.rawWord().trim();
+
+  //   if (!word) return;
+
+  //   const request: CreateWordDto = {
+  //     raw_word: word,
+  //     origin: "mock",
+  //     definition: "mock"
+  //   };
+
+  //   this.wordService.createWord(request);
+  //   this.rawWord.set('');
+  // }
+
+  words: Word[] = []
 }

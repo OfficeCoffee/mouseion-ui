@@ -7,14 +7,14 @@
     border: 1px solid var(--mat-sys-outline-variant);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: var(--mat-sys-level1);
+    box-shadow: #8B7B6C;
 }
 
 .popup-header {
     display: flex;
     justify-content: space-between;
     padding: 10px 16px;
-    background: var(--mat-sys-secondary-container);
+    background: #8B7B6C;
 }
 
 .close-btn {
