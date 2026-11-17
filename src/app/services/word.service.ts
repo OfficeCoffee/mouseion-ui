@@ -21,7 +21,7 @@ export class WordService {
 
   /** GET words. Grabs all words for the view all page. */
   getWords(): Observable<Word[]> {
-    return this.apiService.get<WordDto[]>('word').pipe(
+    return this.apiService.get<Word[]>('word').pipe(
       map(response => response.data), // Backend DTOs are already in the correct format
       catchError(error => {
         console.error('API call failed, using mock data:', error);
@@ -32,7 +32,7 @@ export class WordService {
 
   /** GET word/:id. Matches wordId on WordRequest when auth is wired up. */
   getWordById(wordId: number): Observable<Word> {
-    return this.apiService.get<WordDto>(`word/${wordId}`).pipe(
+    return this.apiService.get<Word>(`word/${wordId}`).pipe(
       map(response => response.data), // Backend DTOs are already in the correct format
       catchError(error => {
         console.error('API call failed, using mock data:', error);

@@ -7,24 +7,26 @@
     </div>
 
     <div class="words-list-container">
-        <div class="word-row">
-            <div class="word-column">
-                <p> Temp name <p>
+
+        @for (word of wordSignal(); track $index){
+            <div class="word-row">
+                <div class="word-column">
+                    <p> {{ word.word ?? 'Untitled'}} <p>
+                </div>
+
+                <div class="definition-column">
+                    <p> {{ word.definition ?? 'Untitled'}} <p>
+                </div>
+
+                <div class="origin-column">
+                    <p> {{ word.origin ?? 'Untitled'}} <p>
+                </div>
+
+                <button class="edit-button">
+                    +
+                </button>
             </div>
-
-            <div class="definition-column">
-                <p> Temp definition <p>
-            </div>
-
-            <div class="origin-column">
-                <p> Temp origin <p>
-            </div>
-
-            <button class="edit-button">
-                +
-            </button>
-
-        </div>
+        }
 
     </div> 
 
