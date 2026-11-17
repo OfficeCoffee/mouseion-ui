@@ -1,11 +1,22 @@
-<div id = "banner">
-    <a href="http://localhost:4200">
-        <button matButton>
-            <mat-icon>arrow_back</mat-icon>
-            Back
-        </button>
-    </a>
-    <div style="text-align:center;">
-        <h1>View Words Page</h1>
+<div class="banner">
+    
+    <div class="backButton">
+        <a href="http://localhost:4200">
+            <button matButton>
+                <mat-icon>arrow_back</mat-icon>
+                Back
+            </button>
+        </a>
+    </div>
+    <div class="title">
+        @if (routeTitle) {
+            <h1>{{ searchTitle }}</h1>
+        } @else {
+            <h1>{{ viewTitle }}</h1>
+        }
+        <!-- <h1>View Words Page</h1> -->
+    </div>
+    <div class = "pusher">
+        <h1></h1>
     </div>
 </div>

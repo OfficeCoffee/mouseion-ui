@@ -1,5 +1,24 @@
-#banner {
-    background-color: #16447E;
+.banner {
+    background-color: #578ccd;
     height: 62px;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
+
+.backButton {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// div {
+//     column-count: 3;
+// }

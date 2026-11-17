@@ -10,4 +10,9 @@ import {MatSlideToggle} from '@angular/material/slide-toggle';
   styleUrl: './view-words-page.scss',
   templateUrl: './view-words-page.html',
 })
-export class ViewWordsPage {}
+export class ViewWordsPage {
+  searchTitle: string = "Results";
+  viewTitle: string = "View All Words";
+
+  routeTitle: boolean = false;
+}
