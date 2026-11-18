@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { ApiResponse, ApiService } from './api.service';
-import { CreateWordDto, UpdateWordDto, WordResponseDto } from '../shared/word.interface';
+import { CreateWordDto, UpdateWordDto, WordResponseDto } from '../shared/words.interface';
 import { Observable, tap} from 'rxjs';
 
 @Injectable({
@@ -45,7 +45,7 @@ export class WordService{
      */
     loadWordByName(name: string): Observable<ApiResponse<WordResponseDto>> {
         //TODO: investigate if special characters like '#' or '?' will mess this path up.
-        return this.apiService.get<WordResponseDto>(`word/name/${name}`);
+        return this.apiService.get<WordResponseDto>(`words/name/${name}`);
     }
 
     /**
@@ -53,7 +53,7 @@ export class WordService{
      * @returns the updated word.
      */
     updateWord(id: number, dto: UpdateWordDto): Observable<ApiResponse<WordResponseDto>> {
-        return this.apiService.put<WordResponseDto>(`word/${id})`, dto).pipe(
+        return this.apiService.put<WordResponseDto>(`words/${id})`, dto).pipe(
             tap(result =>
                 this._words.update(list => 
                     list.map(word => (word.id === id ? result.data : word))
@@ -76,11 +76,3 @@ export class WordService{
         this._words.update(list => [...list, newWord]);
     }
 }
-
-// Storage Service for transfering around data.
-// It's only responsibility is managing the word state in memory.
-// caching 
-// word storage
-
-// no more than one popup. Single instance of popup at app.route.
-// use signal to render or not render.

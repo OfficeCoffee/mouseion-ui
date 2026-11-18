@@ -1,5 +1,5 @@
 import { Component, input, signal } from '@angular/core';
-import { CreateWordDto, WordResponseDto } from '../../shared/word.interface';
+import { CreateWordDto, WordResponseDto } from '../../shared/words.interface';
 import { WordService } from '../../services';
 
 interface Word {

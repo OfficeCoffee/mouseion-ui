@@ -2,4 +2,4 @@
 export { ApiService } from './api.service';
 
 // Features // domain services
-export { WordService } from './word.service'
+export { WordService } from './words.service'
