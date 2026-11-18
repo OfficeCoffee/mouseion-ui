@@ -23,9 +23,9 @@ export class WordService{
      * GET /mouseion/words/name/{name}
      * @returns the word associated with the passed in name
      */
-    getWordByName(name: string): Observable<ApiResponse<WordResponseDto>> {
+    getWordByName(name: string): Observable<ApiResponse<WordResponseDto[]>> {
         //TODO: investigate if special characters like '#' or '?' will mess this path up.
-        return this.apiService.get<WordResponseDto>(`words/name/${name}`);
+        return this.apiService.get<WordResponseDto[]>(`words/name/${name}`);
     }
 
     /**
