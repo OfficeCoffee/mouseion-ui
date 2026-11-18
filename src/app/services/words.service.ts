@@ -12,30 +12,10 @@ export class WordService{
     readonly words = this._words.asReadonly();
 
     /**
-     * GET /mouseion/words
-     * @returns all words in the database
-     */
-    loadAllWords(): Observable<ApiResponse<WordResponseDto[]>> {
-        return this.apiService.get<WordResponseDto[]>('words').pipe(
-            tap(result => this._words.set(result.data))
-        );
-    }
-
-    /**
-     * GET /mouseion/words/recent
-     * @returns the ten most recently added words
-     */  
-    loadRecent10Words(): Observable<ApiResponse<WordResponseDto[]>> {
-        return this.apiService.get<WordResponseDto[]>('words').pipe(
-            tap(result => this._words.set(result.data))
-        );
-    }
-
-    /**
      * GET /mouseion/words/id/{id}
      * @returns the word associated with the passed in id
      */
-    loadWordById(id: number): Observable<ApiResponse<WordResponseDto>> {
+    getWordById(id: number): Observable<ApiResponse<WordResponseDto>> {
         return this.apiService.get<WordResponseDto>(`words/id/${id}`);
     }
 
@@ -43,10 +23,31 @@ export class WordService{
      * GET /mouseion/words/name/{name}
      * @returns the word associated with the passed in name
      */
-    loadWordByName(name: string): Observable<ApiResponse<WordResponseDto>> {
+    getWordByName(name: string): Observable<ApiResponse<WordResponseDto>> {
         //TODO: investigate if special characters like '#' or '?' will mess this path up.
         return this.apiService.get<WordResponseDto>(`words/name/${name}`);
     }
+
+    /**
+     * GET /mouseion/words/recent
+     * @returns the ten most recently added words
+     */  
+    getTenWordsByDate(): Observable<ApiResponse<WordResponseDto[]>> {
+        return this.apiService.get<WordResponseDto[]>('words').pipe(
+            tap(result => this._words.set(result.data))
+        );
+    }
+
+    /**
+     * GET /mouseion/words
+     * @returns all words in the database
+     */
+    getWordsInDeck(): Observable<ApiResponse<WordResponseDto[]>> {
+        return this.apiService.get<WordResponseDto[]>('words').pipe(
+            tap(result => this._words.set(result.data))
+        );
+    }
+
 
     /**
      * PUT /mouseion/words/{id}
