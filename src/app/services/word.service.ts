@@ -9,7 +9,7 @@ import { Observable, tap} from 'rxjs';
 export class WordService{
     constructor(private readonly apiService: ApiService) {}
     private readonly _words = signal<WordResponseDto[]>([]);
-    readonly orders = this._words.asReadonly();
+    readonly words = this._words.asReadonly();
 
     /**
      * GET /mouseion/words
@@ -26,7 +26,7 @@ export class WordService{
      * @returns the ten most recently added words
      */  
     loadRecent10Words(): Observable<ApiResponse<WordResponseDto[]>> {
-        return this.apiService.get<WordResponseDto[]>('orders').pipe(
+        return this.apiService.get<WordResponseDto[]>('words').pipe(
             tap(result => this._words.set(result.data))
         );
     }
@@ -76,3 +76,11 @@ export class WordService{
         this._words.update(list => [...list, newWord]);
     }
 }
+
+// Storage Service for transfering around data.
+// It's only responsibility is managing the word state in memory.
+// caching 
+// word storage
+
+// no more than one popup. Single instance of popup at app.route.
+// use signal to render or not render.
