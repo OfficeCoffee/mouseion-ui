@@ -67,13 +67,22 @@ export class WordService{
      * MOCK: Delete when done.
      * Words are created through the deck service.
      */
-    createWord(dto: CreateWordDto): void {
+    createMockWord(dto: CreateWordDto): void {
         const newWord: WordResponseDto = {
             ...dto,
 
-            id: 42, // There is no answer ;-;
+            id: Date.now(),
             createdAt: new Date().toISOString()
         };
         this._words.update(list => [...list, newWord]);
+    }
+
+    /**
+     * MOCK: Delete when done.
+     * Just here to clean up created words, might not even use.
+     */
+    deleteMockWord(id: number): void {
+        this._words.update(words => words.filter(words => words.id !==id)
+        );
     }
 }
