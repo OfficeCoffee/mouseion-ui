@@ -10,7 +10,7 @@ export type UpdateWordDto = CreateWordDto;
 
 export interface WordResponseDto extends CreateWordDto {
     id: number;
-    createdAt: string; // ISO string?
+    dateAdded: string; // ISO string?
 }
 
 // From the api

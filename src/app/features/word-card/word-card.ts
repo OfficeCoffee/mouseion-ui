@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
 import { WordResponseDto } from '../../shared/words.interface';
+import { MockPost } from '../../services/words.service';
 
 @Component({
   imports: [],
@@ -8,5 +9,5 @@ import { WordResponseDto } from '../../shared/words.interface';
   templateUrl: './word-card.html',
 })
 export class WordCard {
-  readonly word = input.required<WordResponseDto>();
+  readonly word = input.required<MockPost>();
 }

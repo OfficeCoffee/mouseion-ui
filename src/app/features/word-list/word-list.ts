@@ -1,6 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import { WordService } from '../../services';
 import { WordCard } from '../word-card/word-card';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { MockPost } from '../../services/words.service';
+import { map } from 'rxjs';
 
 @Component({
   imports: [WordCard],
@@ -13,6 +16,13 @@ export class WordList {
 
   readonly words = this.wordService.words;
   readonly rawWord = signal('');
+
+  readonly mockWords = toSignal(
+    this.wordService.mockGetWords().pipe(
+      map(response => response.data)
+    ),
+    {initialValue: [] as MockPost[] }
+  );
 
   onWordInput(event: Event): void {
     this.rawWord.set((event.target as HTMLInputElement).value);
