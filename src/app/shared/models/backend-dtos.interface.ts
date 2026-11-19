@@ -18,22 +18,6 @@ export interface DeckRequestDto {
 
 // --- Words -----------------------------------------
 
-export interface WordDto {
-    wordId: number;
-    word: string;
-    origin?: string | null;
-    definition: string;
-    dateAdded: Date;
-}
-
-export interface WordRequestDto {
-    word: string;
-    origin: string;
-    definition: string;
-}
-
-// --- WordsDeck -----------------------------------------
-
 export interface Word {
     wordId: number;
     word: string;
@@ -41,6 +25,14 @@ export interface Word {
     definition: string;
     dateAdded: string;
 }
+
+// export interface WordRequestDto {
+//     word: string;
+//     origin: string;
+//     definition: string;
+// }
+
+// --- WordsDeck -----------------------------------------
 
 export interface WordDeckDto {
     deckId: number;

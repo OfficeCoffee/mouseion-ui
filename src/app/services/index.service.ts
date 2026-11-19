@@ -15,7 +15,6 @@
 
 // Core infrastructure
 export { ApiService } from './api.service';
-export { ErrorBoundaryService } from './error-boundary.service';
 
 // Feature / domain services
 export { WordService } from './word.service';

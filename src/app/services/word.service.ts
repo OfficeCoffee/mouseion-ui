@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { ApiService } from './api.service';
-import { Word, WordDto } from '../shared/models';
+import { Word } from '../shared/models';
 
 @Injectable({
   providedIn: 'root'
