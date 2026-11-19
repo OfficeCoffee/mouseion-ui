@@ -21,7 +21,7 @@ export class WordsTable implements OnInit{
 
   private loadWords(): void{
     this.wordService
-    .getWords()
+    .getTopTenWords()
     .pipe(takeUntilDestroyed(this.destroyRef))
     .subscribe({
       next: words => {

@@ -7,19 +7,18 @@
     </div>
 
     <div class="words-list-container">
-
         @for (word of wordSignal(); track $index){
             <div class="word-row">
                 <div class="word-column">
-                    <p> {{ word.word ?? 'Untitled'}} <p>
+                    <p> {{ word.word ?? 'Untitled'}} </p>
                 </div>
 
                 <div class="definition-column">
-                    <p> {{ word.definition ?? 'Untitled'}} <p>
+                    <p> {{ word.definition ?? 'No definition'}} </p>
                 </div>
 
                 <div class="origin-column">
-                    <p> {{ word.origin ?? 'Untitled'}} <p>
+                    <p> {{ word.origin ?? 'No origin'}} </p>
                 </div>
 
                 <button class="edit-button">
@@ -27,7 +26,6 @@
                 </button>
             </div>
         }
-
     </div> 
 
     <div class="add-word-container">

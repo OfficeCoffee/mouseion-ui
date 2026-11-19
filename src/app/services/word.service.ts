@@ -1,9 +1,6 @@
-//TODO change comment
+//TODO make comment
 /**
- * Students who submit work orders.
- *
- * Each work order embeds a full student object from the API. This service is for
- * standalone student CRUD/list screens (GET with mock fallback).
+ * 
  */
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
@@ -11,17 +8,18 @@ import { map, catchError } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { Word, WordDto } from '../shared/models';
 
-
-//TODO add get word by name, get ten recent words, and post word
 @Injectable({
   providedIn: 'root'
 })
 export class WordService {
   constructor(private readonly apiService: ApiService) {}
 
-  /** GET words. Grabs all words for the view all page. */
-  getWords(): Observable<Word[]> {
-    return this.apiService.get<Word[]>('word').pipe(
+  /** 
+   * GET words
+   * Grabs all words for the view all page
+   */
+  getAllWords(): Observable<Word[]> {
+    return this.apiService.get<Word[]>('words').pipe(
       map(response => response.data), // Backend DTOs are already in the correct format
       catchError(error => {
         console.error('API call failed, using mock data:', error);
@@ -30,9 +28,12 @@ export class WordService {
     );
   }
 
-  /** GET word/:id. Matches wordId on WordRequest when auth is wired up. */
+  /** 
+   * GET word/:id
+   * Matches wordId on WordRequest when auth is wired up
+   */
   getWordById(wordId: number): Observable<Word> {
-    return this.apiService.get<Word>(`word/${wordId}`).pipe(
+    return this.apiService.get<Word>(`word/id/${wordId}`).pipe(
       map(response => response.data), // Backend DTOs are already in the correct format
       catchError(error => {
         console.error('API call failed, using mock data:', error);
@@ -41,6 +42,20 @@ export class WordService {
           throw new Error(`Word with ID ${wordId} not found`);
         }
         return of(word);
+      })
+    );
+  }
+
+  /**
+   * GET words/recent
+   * Get the top ten words decending by date
+   */
+  getTopTenWords(): Observable<Word[]> {
+    return this.apiService.get<Word[]>('words/recent').pipe(
+      map(response => response.data), // Backend DTOs are already in the correct format
+      catchError(error => {
+        console.error('API call failed, using mock data:', error);
+        return of(this.getMockWord());
       })
     );
   }

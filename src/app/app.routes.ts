@@ -1,15 +1,14 @@
 import { Routes } from '@angular/router';
 import { Dashboard } from './features/dashboard/dashboard';
-import { Words } from './features/dashboard/components/words/words';
-
 
 export const routes: Routes = [
     {
-        path: 'dashboard',
-        component: Dashboard
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'dashboard'
     },
     {
-        path: 'words',
-        component: Words
+        path: 'dashboard',
+        component: Dashboard
     }
 ];
