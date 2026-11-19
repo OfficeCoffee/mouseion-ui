@@ -66,7 +66,7 @@ export class WordService{
      * @returns the ten most recently added words
      */  
     getTenWordsByDate(): Observable<ApiResponse<WordResponseDto[]>> {
-        return this.apiService.get<WordResponseDto[]>('words').pipe(
+        return this.apiService.get<WordResponseDto[]>('words/recent').pipe(
             tap(result => this._words.set(result.data))
         );
     }
