@@ -10,5 +10,5 @@ export const routes: Routes = [
     { path: 'popup/addWord', component: AddWordPopup},
     { path: 'popup/editWord', component: EditWordPopup}, //change this to include id later.
     { path: 'popup/saveWord', component: SaveWordPopup},
-    { path: 'popup/addWord', component: WordList},
+    { path: 'words', component: WordList },
 ];

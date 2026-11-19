@@ -1,38 +1,34 @@
-import { Component, input, signal } from '@angular/core';
-import { CreateWordDto, WordResponseDto } from '../../shared/words.interface';
+import { Component, inject, signal } from '@angular/core';
 import { WordService } from '../../services';
-
-interface Word {
-  id: number;
-  name: string;
-}
+import { WordCard } from '../word-card/word-card';
 
 @Component({
-  imports: [],
+  imports: [WordCard],
   selector: 'app-word-list',
   styleUrl: './word-list.scss',
   templateUrl: './word-list.html',
 })
-
 export class WordList {
-  // rawWord = signal('');
+  private readonly wordService = inject(WordService);
 
-  // constructor(protected readonly wordService: WordService) {}
+  readonly words = this.wordService.words;
+  readonly rawWord = signal('');
 
-  // onAddWord(): void {
-  //   const word = this.rawWord().trim();
+  onWordInput(event: Event): void {
+    this.rawWord.set((event.target as HTMLInputElement).value);
+  }
 
-  //   if (!word) return;
+  onAddWord(): void {
+    const word = this.rawWord().trim();
+    
+    if (!word) return;
 
-  //   const request: CreateWordDto = {
-  //     raw_word: word,
-  //     origin: "mock",
-  //     definition: "mock"
-  //   };
+    this.wordService.createMockWord({
+      raw_word: word,
+      origin: 'mock',
+      definition: 'mock'
+    });
 
-  //   this.wordService.createWord(request);
-  //   this.rawWord.set('');
-  // }
-
-  words: Word[] = []
+    this.rawWord.set('');
+  }
 }
