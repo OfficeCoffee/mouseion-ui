@@ -1,8 +1,8 @@
 /**
- * Low-level HTTP gateway to the Spring Boot API (mr-fixit-service).
+ * Low-level HTTP gateway to the Spring Boot API.
  *
  * Domain services call ApiService instead of HttpClient so URL building and
- * response wrapping stay consistent. Only GET and POST: that is the backend contract.
+ * response wrapping stay consistent.
  */
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -67,6 +67,26 @@ export class ApiService {
         data: response,
         timestamp: new Date()
       }))
+    );
+  }
+
+  put<T>(endpoint: string, body: unknown): Observable<ApiResponse<T>> {
+    return this.http.put<T>(`${this.baseUrl}/${endpoint}`, body).pipe(
+        map(response => ({
+            success: true,
+            data: response,
+            timestamp: new Date()
+        }))
+    );
+  }
+
+  delete(endpoint: string): Observable<ApiResponse<void>> {
+    return this.http.delete<void>(`${this.baseUrl}/${endpoint}`).pipe(
+        map(() => ({
+            success: true,
+            data: undefined,
+            timestamp: new Date()
+        }))
     );
   }
 

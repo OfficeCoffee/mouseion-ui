@@ -2,21 +2,22 @@
 /**
  * 
  */
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
+import { Observable, of, tap } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { ApiService } from './api.service';
-import { WordDto } from '../shared/models';
+import { ApiService, ApiResponse } from './api.service';
+import { WordDto, CreateWordDto, UpdateWordDto, WordResponseDto } from '../shared/models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WordService {
   constructor(private readonly apiService: ApiService) {}
+  private readonly _words = signal<WordResponseDto[]>([]);
 
   /** 
-   * GET words
-   * Grabs all words for the view all page
+   * GET mouseion/words
+   * @returns all words in the database
    */
   getAllWords(): Observable<WordDto[]> {
     return this.apiService.get<WordDto[]>('words').pipe(
@@ -28,9 +29,9 @@ export class WordService {
     );
   }
 
-  /** 
-   * GET word/id/:id
-   * Matches wordId on WordRequest when auth is wired up
+  /**
+   * GET /mouseion/words/id/{id}
+   * @returns the word associated with the passed in id
    */
   getWordById(wordId: number): Observable<WordDto> {
     return this.apiService.get<WordDto>(`word/id/${wordId}`).pipe(
@@ -46,9 +47,9 @@ export class WordService {
     );
   }
 
-  /** 
-   * GET word/name/:word
-   * Matches wordId on WordRequest when auth is wired up
+  /**
+   * GET /mouseion/words/name/{name}
+   * @returns the word associated with the passed in name
    */
   getWordByName(name: string): Observable<WordDto> {
     return this.apiService.get<WordDto>(`word/name/${name}`).pipe(
@@ -65,10 +66,10 @@ export class WordService {
   }
 
   /**
-   * GET words/recent
-   * Get the top ten words decending by date
-   */
-  getTopTenWords(): Observable<WordDto[]> {
+   * GET /mouseion/words/recent
+   * @returns the ten most recently added words
+   */  
+  getTenWordsByDate(): Observable<WordDto[]> {
     return this.apiService.get<WordDto[]>('words/recent').pipe(
       map(response => response.data), // Backend DTOs are already in the correct format
       catchError(error => {
@@ -76,6 +77,47 @@ export class WordService {
         return of(this.getMockWord());
       })
     );
+  }
+
+  /**
+   * GET /mouseion/words
+   * @returns all words in the database
+   */
+  getWordsInDeck(): Observable<ApiResponse<WordResponseDto[]>> {
+      // TODO: this name should really be changed because it doesn't get words from a deck,
+      // but rather all existing words.
+      return this.apiService.get<WordResponseDto[]>('words').pipe(
+          tap(result => this._words.set(result.data))
+      );
+  }
+
+
+  /**
+   * PUT /mouseion/words/{id}
+   * @returns the updated word.
+   */
+  updateWord(id: number, dto: UpdateWordDto): Observable<ApiResponse<WordResponseDto>> {
+      return this.apiService.put<WordResponseDto>(`words/${id})`, dto).pipe(
+          tap(result =>
+              this._words.update(list => 
+                  list.map(word => (word.id === id ? result.data : word))
+              )
+          )
+      );
+  }
+
+  /**
+   * MOCK: Delete when done.
+   * Words are created through the deck service.
+   */
+  createMockWord(dto: CreateWordDto): void {
+      const newWord: WordResponseDto = {
+          ...dto,
+
+          id: Date.now(),
+          dateAdded: new Date().toISOString()
+      };
+      this._words.update(list => [...list, newWord]);
   }
 
   /**
