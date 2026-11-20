@@ -6,5 +6,5 @@
  */
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/mouseion' //idk if this is correct
+  apiUrl: 'http://localhost:8080/mouseion'
 };

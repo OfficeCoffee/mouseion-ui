@@ -1,5 +1,5 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
-import { Word } from '../../../../shared/models/backend-dtos.interface';
+import { WordDto } from '../../../../shared/models/backend-dtos.interface';
 import { WordService } from '../../../../services/word.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -13,7 +13,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class WordsTable implements OnInit{
   private readonly destroyRef = inject(DestroyRef)
   private readonly wordService = inject(WordService);
-  readonly wordSignal = signal<Word[]>([]);
+  readonly wordSignal = signal<WordDto[]>([]);
 
   ngOnInit(): void {
     this.loadWords();
