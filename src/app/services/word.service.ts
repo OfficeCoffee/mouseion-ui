@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { Word, WordDto } from '../components/features/shared/models/backend-dtos.interface';
+import { WordDto } from '../components/features/shared/models/backend-dtos.interface';
 import { ApiService } from './api.service';
 
 // getAllWords, getWordByName***, 
@@ -12,32 +12,36 @@ import { ApiService } from './api.service';
 export class WordService {
   constructor(private readonly apiService: ApiService) {}
 
-    getAllWords(): Observable<Word[]> {// path spec VVV
-        return this.apiService.get<Word[]>('words').pipe(
-            map(response => response.data),
-            catchError(error => {
-                console.error('API call failed, using mock data:', error);
-                return of(this.getMockWord());
-            })
-        );
+    getAllWords(): Observable<WordDto[]> {// path spec VVV
+      return this.apiService.get<WordDto[]>('words').pipe(
+        map(response => response.data),
+        catchError(error => {
+          console.error('API call failed, using mock data:', error);
+          return of(this.getMockWord());
+        })
+      );
     }
 
-    getWordByName(name: string): Observable<Word[]> {// path spec VVV
-        return this.apiService.get<Word[]>(`words/name/${name}`).pipe(
-            map(response => response.data),
-            catchError(error => {
-                console.error('API call failed, using mock data:', error);
-                return of(this.getMockWord());
-            })
-        );
+    getWordByName(name: string): Observable<WordDto> {
+      return this.apiService.get<WordDto>(`word/name/${name}`).pipe(
+        map(response => response.data), 
+        catchError(error => {
+          console.error('API call failed, using mock data:', error);
+          const word = this.getMockWord().find(s => s.word === name);
+          if (!word) {
+            throw new Error(`Word with name ${name} not found`);
+          }
+          return of(word);
+        })
+      );
     }
 
-
-    private getMockWord(): Word[] {
+//.toISOString()
+    private getMockWord(): WordDto[] {
     return [
       {
         wordId: 1,
-        word: "Gaiety",
+        word: "Gai",
         origin: "Getting lunch with Sara 09/16",
         definition: "The state of being joyous, vivacious, or cheerful.",
         dateAdded: new Date('2023-01-01').toISOString(),

@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { MatDivider } from '@angular/material/divider';
-import { MatButton } from '@angular/material/button';
-import {MatIcon} from '@angular/material/icon';
+// import { MatDivider } from '@angular/material/divider';
+// import { MatButton } from '@angular/material/button';
+// import {MatIcon} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import { DestroyRef, inject, OnInit, signal } from '@angular/core';
-import { Word } from '../../shared/models/backend-dtos.interface';
 import { WordService } from '../../../../services/word.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { WordDto } from '../../shared/models/backend-dtos.interface';
 
 @Component({
-  imports: [MatDivider, MatButton, MatIcon, MatListModule],
+  imports: [MatListModule],
   selector: 'app-view-words-table',
   styleUrl: './view-words-table.scss',
   templateUrl: './view-words-table.html',
 })
-export class ViewWordsTable {
+export class ViewWordsTable implements OnInit {
 list: any;
 
-private readonly destroyRef = inject(DestroyRef)
+  private readonly destroyRef = inject(DestroyRef)
   private readonly wordService = inject(WordService);
-  readonly wordSignal = signal<Word[]>([]);
+  readonly wordSignal = signal<WordDto[]>([]);
 
   ngOnInit(): void {
     this.loadWords();
@@ -28,10 +28,11 @@ private readonly destroyRef = inject(DestroyRef)
   private loadWords(): void{
     this.wordService
     .getAllWords()
+    //.getWordByName('Gai')
     .pipe(takeUntilDestroyed(this.destroyRef))
     .subscribe({
       next: words => {
-        this.wordSignal.set([...words])
+        this.wordSignal.set([...words]);
       }
     })
   }

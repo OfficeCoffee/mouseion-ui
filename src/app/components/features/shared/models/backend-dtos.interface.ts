@@ -17,24 +17,10 @@ export interface WordDto {
     word: string;
     origin?: string | null;
     definition: string;
-    dateAdded: Date;
-}
-
-export interface WordRequestDto {
-    word: string;
-    origin: string;
-    definition: string;
+    dateAdded: string;
 }
 
 // --- WordsDeck -----------------------------------------
-
-export interface Word {
-    wordId: number;
-    word: string;
-    origin?: string | null;
-    definition: string;
-    dateAdded: string;
-}
 
 export interface WordDeckDto {
     deckId: number;

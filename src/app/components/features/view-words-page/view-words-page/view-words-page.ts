@@ -5,7 +5,7 @@ import {MatSlideToggle} from '@angular/material/slide-toggle';
 //import { matFab } from '@angular/material/button';
 
 @Component({
-  imports: [MatSlideToggle, MatButton, MatIcon],
+  imports: [MatButton, MatIcon],
   selector: 'app-view-words-page',
   styleUrl: './view-words-page.scss',
   templateUrl: './view-words-page.html',
