@@ -29,14 +29,14 @@
             </div>
             <div class="field">
                 <span>Origin</span>
-                    <input 
-                        type="text"
-                        aria-label="Insert origin"
-                        placeholder="Input Origin"
-                        [ngModel]="origin()"
-                        (ngModelChange)="origin.set($event)"
-                        [disabled]="disabled()"
-                    />
+                <input 
+                    type="text"
+                    aria-label="Insert origin"
+                    placeholder="Input Origin"
+                    [ngModel]="origin()"
+                    (ngModelChange)="origin.set($event)"
+                    [disabled]="disabled()"
+                />
             </div>
         </div>
         <div class="field wide">
