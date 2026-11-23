@@ -22,16 +22,12 @@ export class WordService {
       );
     }
 
-    getWordByName(name: string): Observable<WordDto> {
-      return this.apiService.get<WordDto>(`word/name/${name}`).pipe(
-        map(response => response.data), 
+    getWordByName(name: string): Observable<WordDto[]> {// path spec VVV
+      return this.apiService.get<WordDto[]>('words').pipe(
+        map(response => response.data),
         catchError(error => {
           console.error('API call failed, using mock data:', error);
-          const word = this.getMockWord().find(s => s.word === name);
-          if (!word) {
-            throw new Error(`Word with name ${name} not found`);
-          }
-          return of(word);
+          return of(this.getMockWord());
         })
       );
     }

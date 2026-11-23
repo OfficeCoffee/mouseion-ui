@@ -28,7 +28,7 @@ list: any;
   private loadWords(): void{
     this.wordService
     .getAllWords()
-    //.getWordByName('Gai')
+    //.getWordByName('Gaiety')
     .pipe(takeUntilDestroyed(this.destroyRef))
     .subscribe({
       next: words => {
