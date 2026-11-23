@@ -5,6 +5,5 @@
  */
 export const environment = {
   production: false,
-  // apiUrl: 'http://localhost:8080/mouseion'
-    apiUrl: 'https://jsonplaceholder.typicode.com'
+  apiUrl: 'http://localhost:8080/mouseion'
 };
