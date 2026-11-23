@@ -1,21 +1,25 @@
-import { Component, model, input, output, linkedSignal } from '@angular/core';
+import { Component, model, input, output, linkedSignal, computed } from '@angular/core';
 import { Mode } from '../../../../services/popup.service';
 import { WordsDto } from '../../../../shared/words.interface';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  imports: [],
-  selector: 'app-add-word-popup',
-  styleUrl: './add-word-popup.scss',
-  templateUrl: './add-word-popup.html',
+  imports: [FormsModule],
+  selector: 'app-popup',
+  styleUrl: './word-popup.scss',
+  templateUrl: './word-popup.html',
 })
-export class AddWordPopup {
+export class Popup {
   mode = model<Mode>('add');
   wordsDto = input<WordsDto>();
   closed = output<void>();
 
+  // This will handle passing around the word data
   word = linkedSignal(() => this.wordsDto()?.word ?? '');
   origin = linkedSignal(() => this.wordsDto()?.origin ?? '');
   definition = linkedSignal(() => this.wordsDto()?.definition ?? '');
+
+  disabled = computed(() => this.mode() === 'view');
 
   add() {
     // TODO: Call add word from deck service when that is created
@@ -32,4 +36,6 @@ export class AddWordPopup {
     // Update the word using updateWord() from words service.
     this.closed.emit();
   }
+
+  
 }

@@ -31,7 +31,7 @@
     background: color-mix(in srgb, currentColor 15%, transparent);
 }
 
-.save-btn {
+.popup-state-btn {
     padding: 8px 20px;
     border: none;
     border-radius: 8px;
@@ -41,7 +41,7 @@
     cursor: pointer;
 }
 
-.save-btn:hover {
+.popup-state-btn:hover {
     background: color-mix(in srgb, var(--mat-sys-secondary), white 20%);
 }
 
