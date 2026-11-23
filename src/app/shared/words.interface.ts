@@ -13,12 +13,6 @@ export interface WordResponseDto extends CreateWordDto {
     dateAdded: string; // ISO string?
 }
 
-export interface baseWordDto {
-    word: string;
-    origin: string;
-    definition: string;
-}
-
 // From the api
 export interface WordsDto {
     wordId: number;

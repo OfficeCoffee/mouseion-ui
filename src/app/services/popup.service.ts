@@ -1,17 +1,17 @@
 import { Injectable, signal } from "@angular/core";
-import { baseWordDto } from "../shared/words.interface";
+import { WordsDto } from "../shared/words.interface";
 
 // Add: Words can be added
 // View: Words can be viewed, but not edited (have to press edit buton)
 // Edit: Words can be edited and then updated by pressing the save button.
-type Mode = 'add' | 'view' | 'edit';
+export type Mode = 'add' | 'view' | 'update';
 
 @Injectable({ providedIn: 'root'})
 export class PopupService {
-    private readonly _state = signal<{ mode: Mode; word?: baseWordDto} | null> (null);
+    private readonly _state = signal<{ mode: Mode; word?: WordsDto} | null> (null);
     readonly state = this._state.asReadonly();
 
-    open(mode: Mode, word?: baseWordDto) {
+    open(mode: Mode, word?: WordsDto) {
         this._state.set({ mode, word});
     }
 
