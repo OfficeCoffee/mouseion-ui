@@ -1,0 +1,38 @@
+.header{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    padding: auto;
+    // border: 5px solid #4169E1;
+    background: #D3D3D3;
+}
+
+.logo{
+    h3 {
+        font-size: 25px;
+        margin: 0;
+    }
+}
+
+.searchbar{
+    display: flex;
+    // width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    margin: auto;
+
+    border: 1px solid #000000;
+    // border-radius: 20px;
+    background: #FFFFFF;
+}
+
+.search-button{
+    display: flex;
+    width: 55px;
+    cursor: pointer;
+    // :hover 
+
+    border: 1px solid #000000;
+    border-radius: 20px; //Rounds the edges
+    background: #FFFFFF;
+}
