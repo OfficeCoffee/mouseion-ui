@@ -77,24 +77,40 @@ label {
     color: var(--mat-sys-on-surface-variant)
 }
 
+// Shared between input and textarea
+input,
 textarea {
-    flex: 1;
-    min-width: 0;
-    box-sizing: border-box;
-    padding: 10px 12px;
-    border: 1px solid #8B7B6C;
-    border-radius: 8px;
-    background: var(--mat-sys-surface-container-lowest);
-    color: var(--mat-sys-on-surface);
-    font: inherit;
-    resize: none;
-}
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid black;
+  border-radius: 8px;
+  background: var(--mat-sys-surface-container-lowest);
+  color: var(--mat-sys-on-surface);
+  font: inherit;
 
-textarea::placeholder {
+  //scss has an inheritance symbol 
+  //so you don't have to type 'input' / 'textarea' repeatedly 
+  &::placeholder {
     color: var(--mat-sys-on-surface-variant);
     opacity: 0.7;
+  }
+
+  &:focus {
+    outline: 2px solid blue;
+    outline-offset: -1px;
+  }
+
+  &:disabled {
+    background: var(--mat-sys-surface-container);
+    border-color: var(--mat-sys-outline-variant);
+    cursor: not-allowed;
+  }
 }
 
-textarea:focus {
-    outline: 1px solid #8B7B6C;
+// Only belongs to textarea
+textarea {
+  resize: none;
+  min-height: 5rem;
 }
