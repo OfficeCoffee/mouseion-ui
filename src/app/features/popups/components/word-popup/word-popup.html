@@ -1,15 +1,15 @@
 <div class="card">
     <div class="popup-header">
-        <button class="close-btn" type="button" aria-label="Close">X</button>
+        <button class="close-btn" type="button" aria-label="Close" (click)="close()">X</button>
         @switch (mode()) {
             @case ('add') {
-                <button class="popup-state-btn" type="button" aria-label="Add Word">Add</button>
+                <button class="popup-state-btn" type="button" aria-label="Add Word" (click)="add()">Add</button>
             }
             @case ('view') {
-                <button class="popup-state-btn" type="button" aria-label="Add Word">Edit</button>
+                <button class="popup-state-btn" type="button" aria-label="Edit Word" (click)="setMode('update')">Edit</button>
             }
             @case ('update') {
-                <<button class="popup-state-btn" type="button" aria-label="Add Word">Save</button>
+                <<button class="popup-state-btn" type="button" aria-label="Save Word" (click)="update()">Save</button>
             }
         }
     </div>

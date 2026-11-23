@@ -1,7 +1,8 @@
-import { Component, model, input, output, linkedSignal, computed } from '@angular/core';
-import { Mode } from '../../../../services/popup.service';
+import { Component, model, input, output, linkedSignal, computed, inject } from '@angular/core';
+import { Mode, PopupService } from '../../../../services/popup.service';
 import { WordsDto } from '../../../../shared/words.interface';
 import { FormsModule } from '@angular/forms';
+import { WordService } from '../../../../services';
 
 @Component({
   imports: [FormsModule],
@@ -10,9 +11,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './word-popup.html',
 })
 export class Popup {
-  mode = model<Mode>('add');
-  wordsDto = input<WordsDto>();
-  closed = output<void>();
+  private popup = inject(PopupService);
+  private wordService = inject(WordService);
+
+  // Values calculated from other signals
+
+  mode = computed(() => this.popup.state()?.mode ?? 'add');
+  wordsDto = computed(() => this.popup.state()?.word);
 
   // This will handle passing around the word data
   word = linkedSignal(() => this.wordsDto()?.word ?? '');
@@ -21,21 +26,25 @@ export class Popup {
 
   disabled = computed(() => this.mode() === 'view');
 
+  close() {
+    this.popup.close();
+  }
+
+  setMode(mode: Mode){
+    console.log("Changing mode to ", mode);
+    this.popup.setMode(mode);
+  }
+
   add() {
     // TODO: Call add word from deck service when that is created
     // that requires the AddWordToDeckDto from the api repo
-    this.closed.emit();
-  }
-
-  startEdit() {
-    // Switch from view to update
-    this.mode.set('update');
+    console.log("hit add!")
+    this.popup.close();
   }
 
   update(){
     // Update the word using updateWord() from words service.
-    this.closed.emit();
+    console.log("hit update!")
+    this.popup.close();
   }
-
-  
 }

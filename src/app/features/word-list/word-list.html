@@ -2,6 +2,14 @@
     Add Word
 </button>
 
+<button type="button" (click)="popup.open('view')">
+    View Word
+</button>
+
+<button type="button" (click)="popup.open('update')">
+    Update Word
+</button>
+
 <p>Mock words loaded: {{ words().length }}</p>
 <section class="word-list">
     @if (words().length > 0) {
