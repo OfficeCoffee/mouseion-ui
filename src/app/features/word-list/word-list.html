@@ -1,20 +1,13 @@
-<input
-    type="text"
-    [value]="rawWord()"
-    (input)="onWordInput($event)"
-    placeholder="New Word"
->
-
-<button type="button" (click)="onAddWord()">
+<button type="button" (click)="popup.open('add')">
     Add Word
 </button>
 
-<p>Mock words loaded: {{ mockWords().length }}</p>
+<p>Mock words loaded: {{ words().length }}</p>
 <section class="word-list">
-    @if (mockWords().length > 0) {
+    @if (words().length > 0) {
         <p> You got some cool words there </p>
         <ul>
-            @for (word of mockWords(); track word.wordId) {
+            @for (word of words(); track word.wordId) {
                 <app-word-card [word]="word" />
             } 
         </ul>

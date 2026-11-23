@@ -1,1 +1,5 @@
 <router-outlet />
+
+@if (popup.state(); as p){
+    <app-popup [mode]="p.mode" [wordsDto]="p.word"/>
+}

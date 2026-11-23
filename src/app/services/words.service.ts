@@ -1,7 +1,7 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { ApiResponse, ApiService } from './api.service';
-import { CreateWordDto, UpdateWordDto, WordResponseDto } from '../shared/words.interface';
-import { Observable, tap, map} from 'rxjs';
+import { CreateWordDto, UpdateWordDto, WordResponseDto, WordsDto } from '../shared/words.interface';
+import { Observable, tap, map, catchError, of} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -42,6 +42,20 @@ export class WordService{
                 }))
         }))
     );
+    }
+
+    /**
+     * GET /mouseion/words
+     * @returns all words in the database
+     */
+    getAllWords(): Observable<WordsDto[]> {
+        return this.apiService.get<WordsDto[]>('words').pipe(
+        map(response => response.data),
+        catchError(error => {
+            console.error('API call failed:', error);
+            return of([]);
+        })
+        );
     }
 
     /**

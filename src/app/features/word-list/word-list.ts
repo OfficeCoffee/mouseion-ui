@@ -3,7 +3,9 @@ import { WordService } from '../../services';
 import { WordCard } from '../word-card/word-card';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MockPost } from '../../services/words.service';
-import { map } from 'rxjs';
+import { catchError, map, of } from 'rxjs';
+import { WordsDto } from '../../shared/words.interface';
+import { PopupService } from '../../services/popup.service';
 
 @Component({
   imports: [WordCard],
@@ -13,32 +15,11 @@ import { map } from 'rxjs';
 })
 export class WordList {
   private readonly wordService = inject(WordService);
+  
+  popup = inject(PopupService);
 
-  readonly words = this.wordService.words;
-  readonly rawWord = signal('');
-
-  readonly mockWords = toSignal(
-    this.wordService.mockGetWords().pipe(
-      map(response => response.data)
-    ),
-    {initialValue: [] as MockPost[] }
-  );
-
-  onWordInput(event: Event): void {
-    this.rawWord.set((event.target as HTMLInputElement).value);
-  }
-
-  onAddWord(): void {
-    const word = this.rawWord().trim();
-    
-    if (!word) return;
-
-    this.wordService.createMockWord({
-      raw_word: word,
-      origin: 'mock',
-      definition: 'mock'
-    });
-
-    this.rawWord.set('');
-  }
+  readonly words = toSignal(
+    this.wordService.getAllWords(),
+    { initialValue: [] as WordsDto[] }
+  )
 }
