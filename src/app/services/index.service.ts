@@ -17,6 +17,6 @@
 export { ApiService } from './api.service';
 
 // Feature / domain services
-export { WordService } from './word.service';
+export { WordService } from './words.service';
 // export { DeckService } from './deck.service';
 // export { WordDeckService } from './word-deck.service';

@@ -34,7 +34,7 @@ export class WordService {
    * @returns the word associated with the passed in id
    */
   getWordById(wordId: number): Observable<WordDto> {
-    return this.apiService.get<WordDto>(`word/id/${wordId}`).pipe(
+    return this.apiService.get<WordDto>(`words/id/${wordId}`).pipe(
       map(response => response.data), // Backend DTOs are already in the correct format
       catchError(error => {
         console.error('API call failed, using mock data:', error);
@@ -52,7 +52,7 @@ export class WordService {
    * @returns the word associated with the passed in name
    */
   getWordByName(name: string): Observable<WordDto> {
-    return this.apiService.get<WordDto>(`word/name/${name}`).pipe(
+    return this.apiService.get<WordDto>(`words/name/${name}`).pipe(
       map(response => response.data), // Backend DTOs are already in the correct format
       catchError(error => {
         console.error('API call failed, using mock data:', error);
@@ -81,12 +81,10 @@ export class WordService {
 
   /**
    * GET /mouseion/words
-   * @returns all words in the database
+   * @returns all words in the deck id
    */
   getWordsInDeck(): Observable<ApiResponse<WordResponseDto[]>> {
-      // TODO: this name should really be changed because it doesn't get words from a deck,
-      // but rather all existing words.
-      return this.apiService.get<WordResponseDto[]>('words').pipe(
+      return this.apiService.get<WordResponseDto[]>('words/deck/${deckId}').pipe(
           tap(result => this._words.set(result.data))
       );
   }
