@@ -94,7 +94,7 @@ export class WordService {
 
   /**
    * PUT /mouseion/words/{id}
-   * @returns the updated word.
+   * @returns the updated word
    */
   updateWord(id: number, dto: UpdateWordDto): Observable<ApiResponse<WordResponseDto>> {
       return this.apiService.put<WordResponseDto>(`words/${id})`, dto).pipe(

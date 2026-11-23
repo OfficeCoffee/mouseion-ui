@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { WordDto } from '../../../../shared/models/backend-dtos.interface';
-import { WordService } from '../../../../services/word.service';
+import { WordService } from '../../../../services/words.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 
