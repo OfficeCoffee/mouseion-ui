@@ -3,13 +3,13 @@
         <button class="close-btn" type="button" aria-label="Close" (click)="close()">X</button>
         @switch (mode()) {
             @case ('add') {
-                <button class="popup-state-btn" type="button" aria-label="Add Word" (click)="add()">Add</button>
+                <button class="popup-state-btn" type="button" aria-label="Add Word" (click)="add()" [disabled]="form.invalid">Add</button>
             }
             @case ('view') {
-                <button class="popup-state-btn" type="button" aria-label="Edit Word" (click)="setMode('update')">Edit</button>
+                <button class="popup-state-btn" type="button" aria-label="Edit Word" (click)="setMode('update')" >Edit</button>
             }
             @case ('update') {
-                <button class="popup-state-btn" type="button" aria-label="Save Word" (click)="update()">Save</button>
+                <button class="popup-state-btn" type="button" aria-label="Save Word" (click)="update()" [disabled]="form.invalid">Save</button>
             }
         }
     </div>
@@ -22,9 +22,7 @@
                     type="text"
                     aria-label="Insert word"
                     placeholder="Input Word"
-                    [ngModel]="word()"
-                    (ngModelChange)="word.set($event)"
-                    [disabled]="disabled()"
+                    formControlName="word"
                 />
             </div>
             <div class="field">
@@ -33,9 +31,7 @@
                     type="text"
                     aria-label="Insert origin"
                     placeholder="Input Origin"
-                    [ngModel]="origin()"
-                    (ngModelChange)="origin.set($event)"
-                    [disabled]="disabled()"
+                    formControlName="word"
                 />
             </div>
         </div>
@@ -43,9 +39,7 @@
             <span>Definition</span>
             <textarea 
                 placeholder="Input Definition"
-                [ngModel]="definition()"
-                (ngModelChange)="definition.set($event)"
-                [disabled]="disabled()"
+                formControlName="word"
             ></textarea>
         </div>
     </div>

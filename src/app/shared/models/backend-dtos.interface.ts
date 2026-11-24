@@ -16,19 +16,30 @@ export interface DeckRequestDto {
     deckName: string;
 }
 
+export interface DeckRequestDto {
+    deckName: string;
+}
+
+export interface AddWordToDeckDto {
+    word: string;
+    origin: string | null;
+    definition: string;
+    deckId: number;
+}
+
 // --- Words -----------------------------------------
 
 export interface WordDto {
     wordId: number;
     word: string;
-    origin?: string | null;
+    origin: string | null;
     definition: string;
     dateAdded: string;
 }
 
 export interface CreateWordDto {
     raw_word: string;
-    origin?: string;
+    origin: string | null;
     definition: string;
 }
 
@@ -50,7 +61,7 @@ export interface WordDeckDto {
 
 export interface AddWordToDeckDto {
     word: string;
-    origin: string;
+    origin: string | null;
     definition: string;
     deckId: number;
 }
