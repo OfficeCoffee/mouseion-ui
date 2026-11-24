@@ -26,5 +26,10 @@ export const routes: Routes = [
         path: 'view-words-page', // Use for url path
         loadComponent: () => 
             import('./features/view-all-words/components/view-words-page/view-words-page').then(m => m.ViewWordsPage),
+    },
+    {
+        path: 'view-words-results', // Use for url path
+        loadComponent: () => 
+            import('./features/view-all-words/components/view-words-result/view-words-result').then(m => m.ViewWordsResult),
     }
 ];

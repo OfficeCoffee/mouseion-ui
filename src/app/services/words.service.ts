@@ -52,7 +52,7 @@ export class WordService {
    * @returns the word associated with the passed in name
    */
   getWordByName(name: string): Observable<WordDto[]> {
-      return this.apiService.get<WordDto[]>('words').pipe(
+      return this.apiService.get<WordDto[]>(`words/name/${name}`).pipe(
         map(response => response.data),
         catchError(error => {
           console.error('API call failed, using mock data:', error);

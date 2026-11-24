@@ -1,0 +1,50 @@
+<div class="banner">
+    
+    <div class="backButton">
+        <a href="http://localhost:4200/dashboard">
+            <button matButton>
+                <!-- <mat-icon>arrow_back</mat-icon> -->
+                Back
+            </button>
+        </a>
+    </div>
+    <div class="title">
+        <h1>Results</h1>
+    </div>
+    <div class = "pusher">
+        <h1></h1>
+    </div>
+</div>
+
+<div class="table-container">
+
+    <div class="words-list-container">
+
+        @for (word of wordSignal(); track $index){
+            <div class="word-row">
+                <div class="word-column">
+                    <p> {{ word.word ?? 'Untitled'}} <p>
+                </div>
+
+                <div class="definition-column">
+                    <p> {{ word.definition ?? 'Untitled'}} <p>
+                </div>
+
+                <div class="origin-column">
+                    <p> {{ word.origin ?? 'Untitled'}} <p>
+                </div>
+
+                <button class="edit-button">
+                    +
+                </button>
+            </div>
+        }
+    </div> 
+
+    <div class="add-word-container">
+        <button class="add-word-button">
+            Add Word
+        </button>
+    </div>
+    
+</div>
