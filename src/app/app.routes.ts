@@ -17,4 +17,14 @@ export const routes: Routes = [
     { path: 'popup/confirmation', component: ConfirmationPopup},
     { path: 'popup/word', component: Popup},
     { path: 'words', component: WordList },
+    {
+        path: 'view-words-table',
+        loadComponent: () => 
+            import('./features/view-all-words/components/view-words-table/view-words-table').then(m => m.ViewWordsTable),
+    },
+    {
+        path: 'view-words-page', // Use for url path
+        loadComponent: () => 
+            import('./features/view-all-words/components/view-words-page/view-words-page').then(m => m.ViewWordsPage),
+    }
 ];
