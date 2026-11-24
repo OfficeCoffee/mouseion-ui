@@ -1,10 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
-import { WordService } from '../../services';
+import { WordService } from '../../services/words.service';
 import { WordCard } from '../word-card/word-card';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { MockPost } from '../../services/words.service';
-import { catchError, map, of } from 'rxjs';
-import { WordsDto } from '../../shared/words.interface';
+import { WordDto } from '../../shared/models/backend-dtos.interface';
 import { PopupService } from '../../services/popup.service';
 
 @Component({
@@ -20,6 +18,6 @@ export class WordList {
 
   readonly words = toSignal(
     this.wordService.getAllWords(),
-    { initialValue: [] as WordsDto[] }
+    { initialValue: [] as WordDto[] }
   )
 }

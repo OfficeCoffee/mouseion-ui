@@ -1,8 +1,8 @@
 import { Component, model, input, output, linkedSignal, computed, inject } from '@angular/core';
 import { Mode, PopupService } from '../../../../services/popup.service';
-import { WordsDto } from '../../../../shared/words.interface';
+import { WordDto } from '../../../../shared/models/backend-dtos.interface';
 import { FormsModule } from '@angular/forms';
-import { WordService } from '../../../../services';
+import { WordService } from '../../../../services/words.service';
 
 @Component({
   imports: [FormsModule],
@@ -17,12 +17,12 @@ export class Popup {
   // Values calculated from other signals
 
   mode = computed(() => this.popup.state()?.mode ?? 'add');
-  wordsDto = computed(() => this.popup.state()?.word);
+  wordDto = computed(() => this.popup.state()?.word);
 
   // This will handle passing around the word data
-  word = linkedSignal(() => this.wordsDto()?.word ?? '');
-  origin = linkedSignal(() => this.wordsDto()?.origin ?? '');
-  definition = linkedSignal(() => this.wordsDto()?.definition ?? '');
+  word = linkedSignal(() => this.wordDto()?.word ?? '');
+  origin = linkedSignal(() => this.wordDto()?.origin ?? '');
+  definition = linkedSignal(() => this.wordDto()?.definition ?? '');
 
   disabled = computed(() => this.mode() === 'view');
 
