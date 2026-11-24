@@ -51,19 +51,15 @@ export class WordService {
    * GET /mouseion/words/name/{name}
    * @returns the word associated with the passed in name
    */
-  getWordByName(name: string): Observable<WordDto> {
-    return this.apiService.get<WordDto>(`words/name/${name}`).pipe(
-      map(response => response.data), // Backend DTOs are already in the correct format
-      catchError(error => {
-        console.error('API call failed, using mock data:', error);
-        const word = this.getMockWord().find(s => s.word === name);
-        if (!word) {
-          throw new Error(`Word with name ${name} not found`);
-        }
-        return of(word);
-      })
-    );
-  }
+  getWordByName(name: string): Observable<WordDto[]> {
+      return this.apiService.get<WordDto[]>('words').pipe(
+        map(response => response.data),
+        catchError(error => {
+          console.error('API call failed, using mock data:', error);
+          return of(this.getMockWord());
+        })
+      );
+    }
 
   /**
    * GET /mouseion/words/recent
