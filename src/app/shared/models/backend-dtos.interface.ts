@@ -9,7 +9,7 @@
 export interface DeckDto {
     deckId: number;
     deckName: string;
-    dateAdded: Date;
+    dateAdded: string;
 }
 
 export interface DeckRequestDto {
