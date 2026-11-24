@@ -1,0 +1,24 @@
+<div class="banner">
+    
+    <div class="backButton">
+        <a href="http://localhost:4200/dashboard">
+            <button matButton>
+                <!-- <mat-icon>arrow_back</mat-icon> -->
+                Back
+            </button>
+        </a>
+    </div>
+    <div class="title">
+        @if (routeTitle) {
+            <h1>{{ searchTitle }}</h1>
+        } @else {
+            <h1>{{ viewTitle }}</h1>
+        }
+        <!-- <h1>View Words Page</h1> -->
+    </div>
+    <div class = "pusher">
+        <h1></h1>
+    </div>
+</div>
+
+<app-view-words-table></app-view-words-table>
