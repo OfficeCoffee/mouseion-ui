@@ -1,0 +1,26 @@
+<button type="button" (click)="popup.open('add')">
+    Add Word
+</button>
+
+<button type="button" (click)="popup.open('view')">
+    View Word
+</button>
+
+<button type="button" (click)="popup.open('update')">
+    Update Word
+</button>
+
+<p>Mock words loaded: {{ words().length }}</p>
+<section class="word-list">
+    @if (words().length > 0) {
+        <p> You got some cool words there </p>
+        <ul>
+            @for (word of words(); track word.wordId) {
+                <app-word-card [word]="word" />
+            } 
+        </ul>
+    } @else {
+        <p> Alas, we are currently facing a state of absolute depletion.</p>
+    }
+</section>
+
