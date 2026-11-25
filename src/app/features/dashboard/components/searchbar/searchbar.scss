@@ -1,16 +1,21 @@
+@use '../../../../../styles.scss' as style;
+
 .header{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     padding: auto;
     // border: 5px solid #4169E1;
-    background: #D3D3D3;
+    background: style.$color-primary-heather-forest;
 }
 
 .logo{
     h3 {
-        font-size: 25px;
+        font-family: style.$font-type-heading-1;
+        font-size: style.$font-size-heading-1;
         margin: 0;
+        color: style.$color-neutral-silence;
+        -webkit-text-stroke: .01px style.$color-neutral-shiny-black;
     }
 }
 
@@ -21,9 +26,9 @@
     overflow: hidden;
     margin: auto;
 
-    border: 1px solid #000000;
+    border: 1px solid style.$color-neutral-shiny-black;
     // border-radius: 20px;
-    background: #FFFFFF;
+    background: style.$color-neutral-tech-white;
 }
 
 .search-button{
@@ -32,7 +37,7 @@
     cursor: pointer;
     // :hover 
 
-    border: 1px solid #000000;
+    border: 1px solid style.$color-primary-heather-forest;
     border-radius: 20px; //Rounds the edges
-    background: #FFFFFF;
+    background: style.$color-primary-lemon-grass-gray;
 }

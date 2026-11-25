@@ -1,24 +1,24 @@
+@use '../../../styles.scss' as style;
+
 .dashboard{
     display: flex;
     flex-direction: column;
     padding: auto;
-    border: 5px solid #000000;
-    background: #D3D3D3;
+    // border: 5px solid #000000;
+    background: style.$color-primary-heather-forest;
 }
 
 .header{
-    // display: flex;
-    // padding: auto;
-    // border: 5px solid #4169E1;
-    // background: #ADD8E6;
+    display: flex;
+    flex-direction: column;
+    padding: auto;
+    align-items: center;
 }
 
 .word-of-the-day{
     display: flex;
     flex-direction: column;
     padding: auto;
-    // border: 5px solid #4169E1;
-    // background: #ADD8E6;
     align-items: center;
 }
 
@@ -26,7 +26,5 @@
     display: flex;
     flex-direction: column;
     padding: auto;
-    // border: 5px solid #4169E1;
-    // background: #ADD8E6;
     align-items: center;
 }

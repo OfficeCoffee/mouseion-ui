@@ -2,7 +2,7 @@
  * Low-level HTTP gateway to the Spring Boot API (mr-fixit-service).
  *
  * Domain services call ApiService instead of HttpClient so URL building and
- * response wrapping stay consistent. Only GET and POST: that is the backend contract.
+ * response wrapping stay consistent.
  */
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';

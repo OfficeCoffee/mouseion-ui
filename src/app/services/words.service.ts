@@ -33,7 +33,7 @@ export class WordService {
    * Matches wordId on WordRequest when auth is wired up
    */
   getWordById(wordId: number): Observable<WordDto> {
-    return this.apiService.get<WordDto>(`word/id/${wordId}`).pipe(
+    return this.apiService.get<WordDto>(`words/id/${wordId}`).pipe(
       map(response => response.data), // Backend DTOs are already in the correct format
       catchError(error => {
         console.error('API call failed, using mock data:', error);
@@ -51,7 +51,7 @@ export class WordService {
    * Matches wordId on WordRequest when auth is wired up
    */
   getWordByName(name: string): Observable<WordDto> {
-    return this.apiService.get<WordDto>(`word/name/${name}`).pipe(
+    return this.apiService.get<WordDto>(`words/name/${name}`).pipe(
       map(response => response.data), // Backend DTOs are already in the correct format
       catchError(error => {
         console.error('API call failed, using mock data:', error);
@@ -85,21 +85,21 @@ export class WordService {
     return [
       {
         wordId: 1,
-        word: "Gaiety",
+        word: "MOCK: Gaiety",
         origin: "Getting lunch with Sara 09/16",
         definition: "The state of being joyous, vivacious, or cheerful.",
         dateAdded: new Date('2023-01-01').toISOString(),
       },
       {
         wordId: 2,
-        word: "Harangue",
+        word: "MOCK: Harangue",
         origin: null,
         definition: "A long, passionate, and vehement speech, especially one delivered before a public gathering.",
         dateAdded: new Date('2023-01-01').toISOString(),
       },
       {
         wordId: 3,
-        word: "Travail",
+        word: "MOCK: Travail",
         origin: "From book title",
         definition: "Pain, anguish or suffering resulting from mental or physical hardship.",
         dateAdded: new Date('2023-01-01').toISOString(),

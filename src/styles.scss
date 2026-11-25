@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+
+//-----Primary-----
+
+$color-primary-heather-forest: #3F4D46;
+$color-primary-lemon-grass-gray: #99A68F;
+
+//-----Accent Colors-----
+
+$color-accent-deep-teal: #677c71;
+$color-accent-arctic-stone: #CED4C9;
+$color-accent-sisal: #D7C9BC;
+$color-accent-dark-stone: #8B7B6C;
+
+//-----Grays/Neutrals-----
+
+$color-neutral-tech-white: #F5F5F5;
+$color-neutral-shiny-black: #252525;
+$color-neutral-silence: #EDE9E6;
+$color-neutral-gunsmoke: #858686;
+
+//-----Fonts-----
+
+$font-type-heading-1: 'Vollkorn', serif;
+$font-size-heading-1: 40px;
+
+$font-type-heading-2: 'Figtree Bold', sans-serif;
+$font-size-heading-2: 32px;
+
+$font-type-heading-3: 'Archivo', sans-serif;
+$font-size-heading-3: 24px;
+
+$font-type-heading-4: 'Archivo', sans-serif;
+$font-size-heading-4: 20px;
+
+$font-type-heading-5: 'Archivo', sans-serif;
+$font-size-heading-5: 17px;
+
+$font-type-text: 'Archivo', sans-serif;
+$font-size-text: 16;
+
