@@ -7,12 +7,12 @@ import { WordDto } from '../../../../shared/models';
 import {Searchbar} from '../../../dashboard/components/searchbar/searchbar';
 
 @Component({
-  imports: [],
+  imports: [MatListModule],
   selector: 'app-view-words-result',
   styleUrl: './view-words-result.scss',
   templateUrl: './view-words-result.html',
 })
-export class ViewWordsResult {
+export class ViewWordsResult implements OnInit {
 
   private readonly destroyRef = inject(DestroyRef)
   private readonly wordService = inject(WordService);
@@ -21,11 +21,12 @@ export class ViewWordsResult {
   ngOnInit(): void {
     this.loadWords();
   }
-
+  //Searchbar.prototype.searchResults
+  //wordToSearch string = new Searchbar().searchResults;
   private loadWords(): void{
     this.wordService
     //.getAllWords()
-    .getWordByName(Searchbar.prototype.searchResults)
+    .getWordByName(new Searchbar().searchResults)
     .pipe(takeUntilDestroyed(this.destroyRef))
     .subscribe({
       next: words => {
